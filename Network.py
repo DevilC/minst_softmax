@@ -45,7 +45,7 @@ h_output = 1/(1+T.exp(-h_sum))#sigmod function
 
 o_input = h_output
 o_sum = T.dot(o_input, T.transpose(h_o_weight))
-o_output = 1/(1+T.exp(-o_sum))
+o_output = T.nnet.softmax(o_sum)
 
 loss = T.sum((o_output-target)**2) / output_num
 
